@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Charging Point - explore demo EV charging stations and plan a session.">
+  <title>Charging Point | EV Charging Finder</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="#home" aria-label="Charging Point home"><span class="logo-symbol">⚡</span> Charging<span>Point</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#stations">Stations</a><a href="#how-it-works">How it works</a><a href="#about">About</a>
+      </nav>
+      <a href="#stations" class="btn btn-small">Find a Charger</a>
+    </div>
+  </header>
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">⚡ Your EV journey, simplified</span>
+          <h1>Charge smarter.<br><em>Go further.</em></h1>
+          <p>Explore EV charging stations, compare connector types and discover available demo charging points in one place.</p>
+          <a class="btn" href="#stations">Explore Stations <span aria-hidden="true">→</span></a>
+          <p class="tiny">Prototype project · Sample station details, not live availability</p>
+        </div>
+        <div class="hero-art" aria-label="Electric vehicle charging illustration">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="bolt">⚡</div><div class="battery"><div class="battery-fill"></div></div>
+          <div class="stat-chip"><strong>EV Ready</strong><span>Find your next charge</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="stations" class="section container">
+      <div class="section-heading">
+        <div><span class="eyebrow">STATION DIRECTORY</span><h2>Find your charging point</h2><p>Search and filter the sample stations listed below.</p></div>
+        <span class="sample-tag">DEMO DATA</span>
+      </div>
+      <div class="filters">
+        <label>Search by station or area <input id="search" type="search" placeholder="e.g. Coimbatore, RS Puram"></label>
+        <label>Connector <select id="connector"><option value="all">All connectors</option><option value="CCS2">CCS2</option><option value="Type 2">Type 2</option><option value="CHAdeMO">CHAdeMO</option></select></label>
+        <label>Status <select id="status"><option value="all">All statuses</option><option value="Available">Available</option><option value="Busy">Busy</option></select></label>
+      </div>
+      <p id="count" class="results" role="status"></p>
+      <div id="station-list" class="station-grid"></div>
+      <p id="empty" class="empty" hidden>No matching charging stations. Try changing the search or filters.</p>
+    </section>
+    <section id="how-it-works" class="section shaded">
+      <div class="container"><span class="eyebrow">SIMPLE PROCESS</span><h2>How it works</h2>
+        <div class="steps"><article><b>01</b><h3>Search</h3><p>Find a sample station by name or location.</p></article><article><b>02</b><h3>Compare</h3><p>Check connector types, power and sample status.</p></article><article><b>03</b><h3>Plan</h3><p>Select a station and create a local demo booking.</p></article></div>
+      </div>
+    </section>
+    <section id="about" class="section container about">
+      <div><span class="eyebrow">ABOUT THE PROJECT</span><h2>Built for easier EV discovery</h2></div>
+      <p>Charging Point is a student-friendly front-end prototype made with HTML, CSS and JavaScript. It demonstrates station discovery, filtering and a simulated reservation flow. It does not connect to real chargers, payment providers or live location services.</p>
+    </section>
+  </main>
+  <footer><div class="container footer-content"><strong>⚡ ChargingPoint</strong><span>Demo project · HTML · CSS · JavaScript</span></div></footer>
+
+  <dialog id="booking-dialog" aria-labelledby="dialog-title">
+    <form id="booking-form">
+      <button type="button" class="close" id="close-dialog" aria-label="Close">×</button>
+      <h2 id="dialog-title">Plan a demo charging session</h2>
+      <p id="selected-station"></p>
+      <label>Your name <input id="customer-name" name="name" required maxlength="80" autocomplete="name"></label>
+      <label>Preferred date <input id="booking-date" name="date" type="date" required></label>
+      <label>Preferred time <input id="booking-time" name="time" type="time" required></label>
+      <p class="tiny">Demo only: no real reservation is made. Data stays in this browser.</p>
+      <button class="btn" type="submit">Confirm Demo Plan</button>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
